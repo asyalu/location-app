@@ -18,11 +18,14 @@ const getLocation = async (
   requestData = 'check',
   fields = defaultFields
 ): Promise<IIpStackResponse> =>
-  ipstackAPI.get(
-    `/${requestData}?fields=${fields.join(',')}&access_key=${
-      process.env.REACT_APP_API_KEY
-    }`
-  );
+  ipstackAPI
+    .get(
+      `/${requestData}?fields=${fields.join(',')}&access_key=${
+        process.env.REACT_APP_API_KEY
+      }`
+    )
+    .then((response) => response.data)
+    .catch((error) => error);
 
 export { getLocation };
 export type { IIpStackResponse };

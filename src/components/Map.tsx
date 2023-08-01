@@ -1,16 +1,10 @@
-import { FC, useCallback, useRef } from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-
-interface IMap {
-  center: {
-    lat: number;
-    lng: number;
-  };
-}
+import { FC } from 'react';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { IMap } from '../interfaces/map';
 
 const containerStyle = {
-  width: '400px',
-  height: '400px',
+  width: '300px',
+  height: '200px',
 };
 
 const defaultOptions = {
@@ -18,32 +12,20 @@ const defaultOptions = {
   fullscreenControl: false,
 };
 
-const Map: FC<IMap> = ({ center }): JSX.Element => {
+const Map: FC<IMap> = ({ lat, lng }): JSX.Element => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.REACT_APP_MAPS_KEY!,
+    googleMapsApiKey: process.env.REACT_APP_MAPS_KEY as string,
   });
-
-  const mapRef = useRef<google.maps.Map | undefined>(undefined);
-
-  const onLoad = useCallback((map: google.maps.Map) => {
-    mapRef.current = map;
-  }, []);
-
-  const onUnmount = useCallback(() => {
-    mapRef.current = undefined;
-  }, []);
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={center}
+      center={{ lat, lng }}
       zoom={10}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
       options={defaultOptions}
     >
-      <>1</>
+      <Marker position={{ lat, lng }} />
     </GoogleMap>
   ) : (
     <span>Loading...</span>
