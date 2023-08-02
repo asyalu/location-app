@@ -3,34 +3,33 @@ import { IIpStackResponse } from '../api/loader';
 import { ISearchItem } from '../interfaces/searchItem';
 
 interface SearchLocationContextType {
-  searchLocation: IIpStackResponse | null;
-  setUserLocation: (data: IIpStackResponse) => void;
-  searchHistory: ISearchItem[];
-  setSearchHistory: (history: ISearchItem[]) => void;
+  locationSearchData: IIpStackResponse | null;
+  setLocationSearchData: (data: IIpStackResponse) => void;
+  historySearchData: ISearchItem[];
+  setHistorySearchData: (history: ISearchItem[]) => void;
 }
 
 const SearchLocationContext = createContext<SearchLocationContextType>({
-  searchLocation: null,
-  setUserLocation: () => {},
-  searchHistory: [],
-  setSearchHistory: () => {},
+  locationSearchData: null,
+  setLocationSearchData: () => {},
+  historySearchData: [],
+  setHistorySearchData: () => {},
 });
 
 const useSearchLocationContext = () => useContext(SearchLocationContext);
 
 const SearchLocationProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [searchLocation, setUserLocation] = useState<IIpStackResponse | null>(
-    null
-  );
-  const [searchHistory, setSearchHistory] = useState<ISearchItem[]>([]);
+  const [locationSearchData, setLocationSearchData] =
+    useState<IIpStackResponse | null>(null);
+  const [historySearchData, setHistorySearchData] = useState<ISearchItem[]>([]);
 
   return (
     <SearchLocationContext.Provider
       value={{
-        searchLocation,
-        setUserLocation,
-        searchHistory,
-        setSearchHistory,
+        locationSearchData,
+        setLocationSearchData,
+        historySearchData,
+        setHistorySearchData,
       }}
     >
       {children}

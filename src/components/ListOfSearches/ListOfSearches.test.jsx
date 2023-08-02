@@ -14,7 +14,7 @@ const mockSearchHistory = [
 
 test('renders list of searches with data', () => {
   useSearchLocationContext.mockReturnValue({
-    searchHistory: mockSearchHistory,
+    historySearchData: mockSearchHistory,
   });
 
   render(<ListOfSearches />);
@@ -30,7 +30,7 @@ test('renders list of searches with data', () => {
 
 test('renders message for empty search history', () => {
   useSearchLocationContext.mockReturnValue({
-    searchHistory: [],
+    historySearchData: [],
   });
 
   render(<ListOfSearches />);

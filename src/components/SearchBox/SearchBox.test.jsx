@@ -12,8 +12,8 @@ const mockLocationData = {
   ip: '123.555.01.33',
 };
 
-const setUserLocation = jest.fn();
-const setSearchHistory = jest.fn();
+const setLocationSearchData = jest.fn();
+const setHistorySearchData = jest.fn();
 
 jest.mock('../../contexts/SearchLocationContext', () => ({
   useSearchLocationContext: jest.fn(),
@@ -25,9 +25,9 @@ jest.mock('../../services/apiService', () => ({
 
 beforeEach(() => {
   useSearchLocationContext.mockReturnValue({
-    searchHistory: [],
-    setUserLocation,
-    setSearchHistory,
+    historySearchData: [],
+    setLocationSearchData,
+    setHistorySearchData,
   });
 
   render(<SearchBox />);
@@ -54,8 +54,8 @@ test('handles form submission', async () => {
   });
 
   await act(async () => {
-    expect(setUserLocation).toHaveBeenCalledWith(mockLocationData);
-    expect(setSearchHistory).toHaveBeenCalledWith([
+    expect(setLocationSearchData).toHaveBeenCalledWith(mockLocationData);
+    expect(setHistorySearchData).toHaveBeenCalledWith([
       { id: expect.any(Number), query: '192.168.1.1' },
     ]);
   });

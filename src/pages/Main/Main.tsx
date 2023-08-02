@@ -11,7 +11,7 @@ const Main = () => {
   const [userLocation, setUserLocationInfo] = useState<
     IIpStackResponse | undefined
   >();
-  const { searchLocation } = useSearchLocationContext();
+  const { locationSearchData } = useSearchLocationContext();
 
   const getUserLocationInfo = async () => {
     const response = await fetchLocationData();
@@ -34,8 +34,10 @@ const Main = () => {
             <>
               <div className="w-full flex justify-center bg-white p-4 rounded-lg shadow">
                 <Map
-                  lat={userLocation.latitude}
-                  lng={userLocation.longitude}
+                  center={{
+                    lat: userLocation.latitude,
+                    lng: userLocation.longitude,
+                  }}
                 />
               </div>
               <div className="w-full bg-white p-4 rounded-lg shadow">
@@ -56,12 +58,14 @@ const Main = () => {
         <div className="w-full">
           <SearchBox />
         </div>
-        {searchLocation ? (
+        {locationSearchData ? (
           <div className="w-full flex gap-5">
             <div className="w-full flex justify-center bg-white p-4 rounded-lg shadow">
               <Map
-                lat={searchLocation.latitude}
-                lng={searchLocation.longitude}
+                center={{
+                  lat: locationSearchData.latitude,
+                  lng: locationSearchData.longitude,
+                }}
               />
             </div>
             <div className="w-full bg-white p-4 rounded-lg shadow">
@@ -69,9 +73,9 @@ const Main = () => {
                 Information about search location
               </h2>
               <LocationInfo
-                city={searchLocation.city}
-                country={searchLocation.country_name}
-                ip={searchLocation.ip}
+                city={locationSearchData.city}
+                country={locationSearchData.country_name}
+                ip={locationSearchData.ip}
               />
             </div>
           </div>

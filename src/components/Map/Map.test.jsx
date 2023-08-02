@@ -5,12 +5,7 @@ import { Map } from './Map';
 
 test('renders map with provided coordinates', () => {
   const mockCoordinates = { lat: 40.7128, lng: -74.006 };
-  const { asFragment } = render(
-    <Map
-      lat={mockCoordinates.lat}
-      lng={mockCoordinates.lng}
-    />
-  );
+  const { asFragment } = render(<Map center={mockCoordinates} />);
 
   expect(asFragment()).toMatchSnapshot();
 });

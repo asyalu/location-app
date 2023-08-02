@@ -1,4 +1,6 @@
 export interface IMap {
-  lat: number;
-  lng: number;
+  center: {
+    lat: number;
+    lng: number;
+  };
 }

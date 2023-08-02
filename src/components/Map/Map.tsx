@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 import { IMap } from '../../interfaces/map';
 
 const containerStyle = {
@@ -12,7 +12,7 @@ const defaultOptions = {
   fullscreenControl: false,
 };
 
-const Map: FC<IMap> = ({ lat, lng }): JSX.Element => {
+const Map: FC<IMap> = ({ center }): JSX.Element => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_MAPS_KEY as string,
@@ -21,11 +21,11 @@ const Map: FC<IMap> = ({ lat, lng }): JSX.Element => {
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={{ lat, lng }}
+      center={center}
       zoom={10}
       options={defaultOptions}
     >
-      <Marker position={{ lat, lng }} />
+      <MarkerF position={center} />
     </GoogleMap>
   ) : (
     <span>Loading...</span>

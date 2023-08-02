@@ -29,8 +29,8 @@ beforeEach(async () => {
   fetchLocationData.mockResolvedValue(mockLocationData);
 
   useSearchLocationContext.mockReturnValue({
-    searchLocation: [mockLocationData],
-    searchHistory: [mockHistory],
+    locationSearchData: [mockLocationData],
+    historySearchData: [mockHistory],
   });
 
   await act(async () => {

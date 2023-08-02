@@ -4,7 +4,7 @@ import { fetchLocationData } from '../../services/apiService';
 
 const SearchBox: FC = (): JSX.Element => {
   const [searchValue, setSearchValue] = useState('');
-  const { searchHistory, setUserLocation, setSearchHistory } =
+  const { historySearchData, setLocationSearchData, setHistorySearchData } =
     useSearchLocationContext();
 
   const handleSubmit = async (e: FormEvent) => {
@@ -12,11 +12,11 @@ const SearchBox: FC = (): JSX.Element => {
 
     const response = await fetchLocationData(searchValue);
 
-    setUserLocation(response);
+    setLocationSearchData(response);
 
-    setSearchHistory([
+    setHistorySearchData([
       { id: Date.now(), query: searchValue },
-      ...searchHistory,
+      ...historySearchData,
     ]);
 
     setSearchValue('');

@@ -3,16 +3,16 @@ import { useSearchLocationContext } from '../../contexts/SearchLocationContext';
 import { ISearchItem } from '../../interfaces/searchItem';
 
 const ListOfSearches: FC = (): JSX.Element => {
-  const { searchHistory } = useSearchLocationContext();
+  const { historySearchData } = useSearchLocationContext();
 
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4 bg-gray-100 p-2 rounded-lg shadow">
         List of searches
       </h2>
-      {searchHistory.length ? (
+      {historySearchData.length ? (
         <ul className="space-y-2 ">
-          {searchHistory.map((item: ISearchItem) => (
+          {historySearchData.map((item: ISearchItem) => (
             <li
               key={item.id}
               className="bg-white p-2 rounded-lg shadow cursor-pointer hover:bg-gray-200"
