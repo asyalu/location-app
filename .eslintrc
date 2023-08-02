@@ -14,7 +14,7 @@
       "env": {
         "node": true
       },
-      "files": [".eslintrc.{js,cjs}"],
+      "files": [".eslintrc.{js,cjs}", "src/components/**/*.test.js"],
       "parserOptions": {
         "sourceType": "script"
       }
@@ -29,6 +29,15 @@
   "rules": {
     "import/extensions": "off",
     "react/react-in-jsx-scope": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "import/no-extraneous-dependencies": [
+      "off",
+      {
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false,
+        "packageDir": "./"
+      }
+    ]
   }
 }

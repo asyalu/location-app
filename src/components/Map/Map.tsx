@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { IMap } from '../interfaces/map';
+import { IMap } from '../../interfaces/map';
 
 const containerStyle = {
   width: '300px',

@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches Main component snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="h-full flex p-5"
+  >
+    <div
+      class="w-1/3 mt-5 p-4 rounded-lg shadow"
+    >
+      <div
+        class="p-4"
+      >
+        <h2
+          class="text-xl font-bold mb-4 bg-gray-100 p-2 rounded-lg shadow"
+        >
+          List of searches
+        </h2>
+        <ul
+          class="space-y-2 "
+        >
+          <li
+            class="bg-white p-2 rounded-lg shadow cursor-pointer hover:bg-gray-200"
+          >
+            44.6666.12.4400
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="w-full flex flex-col gap-5 p-5"
+    >
+      <div
+        class="w-full flex gap-5"
+      >
+        <span
+          class="text-gray-500"
+        >
+          Loading user location...
+        </span>
+      </div>
+      <div
+        class="w-full"
+      >
+        <form
+          class="w-full"
+        >
+          <div
+            class="h-10% w-full bg-gray-100 p-4 flex items-center"
+          >
+            <input
+              class="w-3/4 border border-gray-300 p-2 mr-2 rounded"
+              placeholder="Enter IP or URL..."
+              type="text"
+              value=""
+            />
+            <button
+              class="bg-blue-500 text-white px-4 py-2 rounded"
+              type="submit"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+      <div
+        class="w-full flex gap-5"
+      >
+        <div
+          class="w-full flex justify-center bg-white p-4 rounded-lg shadow"
+        >
+          <span>
+            Loading...
+          </span>
+        </div>
+        <div
+          class="w-full bg-white p-4 rounded-lg shadow"
+        >
+          <h2
+            class="text-xl font-bold mb-4"
+          >
+            Information about search location
+          </h2>
+          <div
+            class="h-30% w-30% bg-gray-100 p-4 rounded-lg shadow"
+          >
+            <p>
+              <span
+                class="font-bold"
+              >
+                City:
+              </span>
+               
+            </p>
+            <p>
+              <span
+                class="font-bold"
+              >
+                Country:
+              </span>
+               
+            </p>
+            <p>
+              <span
+                class="font-bold"
+              >
+                IP:
+              </span>
+               
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

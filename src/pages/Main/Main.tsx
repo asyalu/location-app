@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Map } from '../components/Map';
-import { IIpStackResponse } from '../api/loader';
-import { ListOfSearches } from '../components/ListOfSearches';
-import { LocationInfo } from '../components/LocationInfo';
-import { SearchBox } from '../components/SearchBox';
-import { useSearchLocationContext } from '../contexts/SearchLocationContext';
-import { fetchLocationData } from '../services/apiService';
+import { Map } from '../../components/Map/Map';
+import { IIpStackResponse } from '../../api/loader';
+import { ListOfSearches } from '../../components/ListOfSearches/ListOfSearches';
+import { LocationInfo } from '../../components/LocationInfo/LocationInfo';
+import { SearchBox } from '../../components/SearchBox/SearchBox';
+import { useSearchLocationContext } from '../../contexts/SearchLocationContext';
+import { fetchLocationData } from '../../services/apiService';
 
 const Main = () => {
   const [userLocation, setUserLocationInfo] = useState<
@@ -30,28 +30,28 @@ const Main = () => {
       </div>
       <div className="w-full flex flex-col gap-5 p-5">
         <div className="w-full flex gap-5">
-          {userLocation && (
-            <div className="w-full flex justify-center bg-white p-4 rounded-lg shadow">
-              <Map
-                lat={userLocation.latitude}
-                lng={userLocation.longitude}
-              />
-            </div>
+          {userLocation ? (
+            <>
+              <div className="w-full flex justify-center bg-white p-4 rounded-lg shadow">
+                <Map
+                  lat={userLocation.latitude}
+                  lng={userLocation.longitude}
+                />
+              </div>
+              <div className="w-full bg-white p-4 rounded-lg shadow">
+                <h2 className="text-xl font-bold mb-4">
+                  Information about user location
+                </h2>
+                <LocationInfo
+                  city={userLocation.city}
+                  country={userLocation.country_name}
+                  ip={userLocation.ip}
+                />
+              </div>
+            </>
+          ) : (
+            <span className="text-gray-500">Loading user location...</span>
           )}
-          <div className="w-full bg-white p-4 rounded-lg shadow">
-            <h2 className="text-xl font-bold mb-4">
-              Information about user location
-            </h2>
-            {userLocation ? (
-              <LocationInfo
-                city={userLocation.city}
-                country={userLocation.country_name}
-                ip={userLocation.ip}
-              />
-            ) : (
-              <span className="text-gray-500">Loading user location...</span>
-            )}
-          </div>
         </div>
         <div className="w-full">
           <SearchBox />

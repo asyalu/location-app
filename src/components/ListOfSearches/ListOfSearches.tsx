@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { useSearchLocationContext } from '../contexts/SearchLocationContext';
-import { ISearchItem } from '../interfaces/searchItem';
+import { useSearchLocationContext } from '../../contexts/SearchLocationContext';
+import { ISearchItem } from '../../interfaces/searchItem';
 
 const ListOfSearches: FC = (): JSX.Element => {
   const { searchHistory } = useSearchLocationContext();

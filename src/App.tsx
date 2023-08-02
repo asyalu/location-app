@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Main } from './pages/Main';
+import { Main } from './pages/Main/Main';
 import { SearchLocationProvider } from './contexts/SearchLocationContext';
 
 const App: FC = () => (

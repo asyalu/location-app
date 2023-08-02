@@ -1,6 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
-import { useSearchLocationContext } from '../contexts/SearchLocationContext';
-import { fetchLocationData } from '../services/apiService';
+import { useSearchLocationContext } from '../../contexts/SearchLocationContext';
+import { fetchLocationData } from '../../services/apiService';
 
 const SearchBox: FC = (): JSX.Element => {
   const [searchValue, setSearchValue] = useState('');
